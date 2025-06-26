@@ -1,0 +1,40 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+multi_buy = "EW1HRvR8K2pNx5ZbBjqSnnU7mrS5c3ecELndTNmJGjTR"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "https://devnet.helius-rpc.com/?api-key=ba79f9c7-5c1b-41c6-81dd-234e9fc53df7"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 50000
+shutdown_wait = 2000
+upgradeable = true
+
+[test.validator]
+# url = "https://mainnet.helius-rpc.com/?api-key=ba79f9c7-5c1b-41c6-81dd-234e9fc53df7"
+url = "https://devnet.helius-rpc.com/?api-key=ba79f9c7-5c1b-41c6-81dd-234e9fc53df7"
+# url = "https://rpc.asdf1234.win"
+
+# cp-swap program in mainnet
+[[test.validator.clone]]
+address = "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+
+# cp-swap create_pool_fee_reveiver in mainnet
+[[test.validator.clone]]
+address = "DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8"
+
+# cp-swap ammConfig in mainnet
+[[test.validator.clone]]
+address = "D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2"
